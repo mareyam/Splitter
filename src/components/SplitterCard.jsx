@@ -1,29 +1,12 @@
-import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import AmountButtons from "./common/AmountButton/AmountButtons";
 import ResetButton from "./common/ResetButton/ResetButton";
 import TipAmount from "./features/TipAmount";
 import TotalAmount from "./features/TotalAmount";
 import "../styles/splitter.css";
+import useSplitter from "../zustand-store/useSplitterStore";
 
 function Splitter() {
-  const values = [5, 10, 15, 20, 25];
-  const [splitTip, setSplitTip] = useState(0);
-  const [splitBill, setSplitBill] = useState(0);
-
-  const handleSplitTipChange = (newSplitTip) => {
-    setSplitTip(newSplitTip);
-  };
-
-  const handleSplitBillChange = (newSplitBill) => {
-    setSplitBill(newSplitBill);
-  };
-
-  const handleResetClick = () => {
-    setSplitTip(0);
-    setSplitBill(0);
-  };
-
   return (
     <div className="outer-container">
       <Container className="container">
@@ -41,13 +24,8 @@ function Splitter() {
             xl={4}
             className="col1 d-flex flex-column"
           >
-            <AmountButtons
-              values={values}
-              onSplitTipChange={handleSplitTipChange}
-              onSplitBillChange={handleSplitBillChange}
-            />
+            <AmountButtons />
           </Col>
-
           <Col
             xs={12}
             sm={12}
@@ -57,11 +35,11 @@ function Splitter() {
             className="col2 d-flex flex-column"
           >
             <div>
-              <TipAmount tipAmount={splitTip.toFixed(2)} />
-              <TotalAmount totalAmount={splitBill.toFixed(2)} />
+              <TipAmount />
+              <TotalAmount />
             </div>
             <div>
-              <ResetButton onClick={handleResetClick} />
+              <ResetButton />
             </div>
           </Col>
         </Row>

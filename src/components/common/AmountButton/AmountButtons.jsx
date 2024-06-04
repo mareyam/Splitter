@@ -1,37 +1,38 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import "../../../styles/splitter.css";
+import useSplitter from "../../../zustand-store/useSplitterStore";
 
-const AmountButtons = ({ values, onSplitTipChange, onSplitBillChange }) => {
-  const [selectedValue, setSelectedValue] = useState(0);
-  const [bill, setBill] = useState(0);
-  const [people, setPeople] = useState(0);
-  const [split, setSplit] = useState(0);
+const AmountButtons = () => {
+  const values = [5, 10, 15, 20, 25];
 
-  const handleCustomInputChange = (event) => {
-    setSelectedValue(event.target.value);
-    console.log(selectedValue);
-  };
-
-  const handleBill = (event) => {
-    setBill(event.target.value);
-  };
-
-  const handlePeople = (e) => {
-    setPeople(e.target.value);
-  };
+  const {
+    bill,
+    people,
+    splitTip,
+    selectedSplitAmount,
+    setSplitTip,
+    splitBill,
+    setSplitBill,
+    setBill,
+    setPeople,
+    setSplit,
+    setSelectedSplitAmount,
+  } = useSplitter();
 
   useEffect(() => {
     const calculateSplit = () => {
-      const percentage = selectedValue / 100;
-      const splitTip = (bill * percentage) / people;
-      const splitBill = bill / people + splitTip;
-      onSplitTipChange(splitTip);
-      onSplitBillChange(splitBill);
-      setSplit(splitTip);
+      if (bill && people && selectedSplitAmount) {
+        const percentage = selectedSplitAmount / 100;
+        const splitTip = (bill * percentage) / people;
+        const splitBill = bill / people + splitTip;
+        setSplitTip(splitTip);
+        setSplitBill(splitBill);
+        setSplit(splitTip);
+      }
     };
 
     calculateSplit();
-  }, [bill, people, selectedValue, onSplitTipChange, onSplitBillChange]);
+  }, [bill, people, selectedSplitAmount]);
 
   return (
     <div className="AmountButtonsMainDiv">
@@ -41,17 +42,17 @@ const AmountButtons = ({ values, onSplitTipChange, onSplitBillChange }) => {
         className="input"
         type="text"
         placeholder="0.00"
-        onChange={handleBill}
+        onChange={(event) => setBill(event.target.value)}
       />
       <label>Select Tip%</label>
       <div className="AmountButtonsSubDiv">
         {values.map((value, index) => (
           <button
             key={index}
-            onClick={() => setSelectedValue(value)}
+            onClick={() => setSelectedSplitAmount(value)}
             style={{
-              background: selectedValue === value ? "#26C2AD" : "#114A4E",
-              color: selectedValue === value ? "black" : "white",
+              background: selectedSplitAmount === value ? "#26C2AD" : "#114A4E",
+              color: selectedSplitAmount === value ? "black" : "white",
               margin: "5px",
               padding: "10px 20px",
               minWidth: "130px",
@@ -65,7 +66,7 @@ const AmountButtons = ({ values, onSplitTipChange, onSplitBillChange }) => {
           className="input"
           type="text"
           placeholder="Custom"
-          onChange={handleCustomInputChange}
+          onChange={(event) => setSelectedSplitAmount(event.target.value)}
         />
       </div>
 
@@ -75,7 +76,7 @@ const AmountButtons = ({ values, onSplitTipChange, onSplitBillChange }) => {
         className="input"
         type="text"
         placeholder="0"
-        onChange={handlePeople}
+        onChange={(event) => setPeople(event.target.value)}
       />
     </div>
   );

@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
+import useSplitter from "../../zustand-store/useSplitterStore";
 
-const TipAmount = ({ tipAmount }) => {
-  const formattedTipAmount = isNaN(tipAmount) ? "0" : tipAmount;
+const TipAmount = () => {
+  const { splitTip, setSplitTip } = useSplitter();
+  const formattedTipAmount = isNaN(splitTip) ? "0" : splitTip;
 
   return (
     <div className="col2div1 d-flex">
@@ -10,7 +12,7 @@ const TipAmount = ({ tipAmount }) => {
         <br />
         <span>/person</span>
       </p>
-      <h3>${formattedTipAmount}</h3>
+      <h3>${formattedTipAmount.toFixed(2)}</h3>
     </div>
   );
 };
