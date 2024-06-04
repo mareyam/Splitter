@@ -1,0 +1,131 @@
+p,
+h6,
+label,
+input {
+  font-family: "Merriweather", serif;
+  font-family: "Oswald", sans-serif;
+  font-family: "Overpass", sans-serif;
+}
+.container h6 {
+  text-align: center;
+  color: #26c2ad;
+  letter-spacing: 5px;
+}
+label,
+.AmountButtonsMainDiv h6 {
+  text-align: left;
+  font-size: 12px;
+  justify-content: left;
+  color: #6b6b6b;
+}
+.outer-container {
+  background-color: #c5e4e7;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.row {
+  background-color: white;
+  height: 60vh;
+  border-radius: 10px;
+}
+
+.col1 {
+  background-color: white;
+  border-radius: 10px;
+  padding: 1% 5% 1% 5%;
+  /* top x bottom*/
+}
+.col1 input {
+  border: 2px solid red;
+  background-color: #e0eff1;
+  border: none;
+  width: 95%;
+  padding: 2%;
+}
+
+.AmountButtonsMainDiv {
+}
+
+.AmountButtonsMainDiv input {
+  background-color: #e0eff1;
+  border: none;
+}
+.col2 {
+  background-color: #114a4e;
+  border-radius: 10px;
+  padding: 5%;
+}
+
+.col2div1,
+.col2div2 {
+  justify-content: space-between;
+  display: flex;
+  /*padding: 2vh; */
+}
+
+.col2div1,
+.col2div2 {
+  color: #26c2ad;
+}
+
+.col2div1 p,
+.col2div2 p {
+  color: #c5e4e7;
+  font-size: 14px;
+}
+
+.col2div1 span,
+.col2div2 span {
+  color: #1e8577;
+  font-size: 12px;
+}
+
+.resetButtondiv {
+  justify-content: center;
+  display: flex;
+  height: "100px";
+  border: "2px solid red";
+}
+.resetButton {
+  width: 100%;
+  background-color: #1e8577;
+  height: "100px";
+  border: "2px solid red";
+}
+
+.AmountButtonsSubDiv {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.AmountButtonsSubDiv input {
+  background-color: #e0eff1;
+  border: none;
+  justify-content: space-between;
+  display: flex;
+  width: 130px;
+  padding: 2%;
+  margin: 5px;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+.h1 {
+  color: #114a4e;
+}
+.h1 {
+  color: #26c2ad;
+}
+.h1 {
+  color: #c5e4e7;
+}
+
+/* .col1div {
+     display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5px;
+    border: 2px solid blue;
+
+} */

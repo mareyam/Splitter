@@ -1,13 +1,12 @@
-import Splitter from './Splitter';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import Splitter from "./components/SplitterCard";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
-
   return (
-    <div style={{width:'100vw', height:'100vh'}}>
-    <Splitter/>
+    <div style={{ width: "100vw", height: "100vh" }}>
+      <Splitter />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
